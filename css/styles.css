@@ -1,0 +1,333 @@
+:root {
+  --night: #12062b;
+  --plum: #2b0a3d;
+  --marigold: #ffb627;
+  --kumkum: #e8412c;
+  --clay: #c8692a;
+  --cream: #fff4d6;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--night);
+  color: var(--cream);
+  font-family: "Mukta", sans-serif;
+}
+.hindi,
+h1,
+h2,
+h3 {
+  font-family: "Yatra One", "Mukta", serif;
+  font-weight: 400;
+}
+#fx {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.stage {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 1rem 9rem;
+  background:
+    radial-gradient(ellipse at 50% 110%, #ff7a2f55 0%, transparent 55%),
+    linear-gradient(180deg, #0b0320 0%, var(--night) 40%, var(--plum) 100%);
+}
+
+.stars i {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: twinkle ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.moon {
+  position: absolute; top: 7%; right: 9%;
+  width: 70px; height: 70px; aspect-ratio: 1; flex: none;
+  filter: drop-shadow(0 0 12px #cfd8ff66);          /* soft glow */
+}
+.moon::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  /* craters on top of a grey, slightly shaded surface */
+  background:
+    radial-gradient(circle at 30% 62%, #7d8087 0 7%, transparent 8%),
+    radial-gradient(circle at 44% 80% , #8a8d94 0 5%, transparent 6%),
+    radial-gradient(circle at 22% 44%, #888b92 0 4%, transparent 5%),
+    radial-gradient(circle at 55% 66%, #7a7d84 0 6%, transparent 7%),
+    radial-gradient(circle at 35% 70%, #f1f2f4, #b9bcc2 55%, #7f8289);
+  /* hides a circle toward the upper right, leaving the crescent */
+  -webkit-mask: radial-gradient(circle at 74% 26%, transparent 51%, #000 52%);
+          mask: radial-gradient(circle at 74% 26%, transparent 51%, #000 52%);
+}
+
+.lanterns span {
+  position: absolute;
+  bottom: -80px;
+  width: 34px;
+  height: 46px;
+  border-radius: 40% 40% 45% 45%;
+  transform: scale(var(--s));
+  background: radial-gradient(circle at 50% 60%, #ffe08a, #ff8a2b 60%, #c8381a);
+  box-shadow: 0 0 28px 8px #ff8a2b66;
+  animation: rise linear infinite;
+  opacity: 0.85;
+}
+@keyframes rise {
+  to {
+    transform: translate(40px, -115vh) scale(var(--s));
+  }
+}
+
+.diyas {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 0 2vw;
+  background: linear-gradient(0deg, #1a0829, transparent);
+  z-index: 1;
+}
+.diya {
+  position: relative;
+  width: 62px;
+  height: 22px;
+  border-radius: 0 0 62px 62px;
+  background: linear-gradient(180deg, #e0833a, var(--clay) 60%, #7d3a14);
+  margin-bottom: 14px;
+}
+.diya em {
+  position: absolute;
+  top: -2px;
+  left: 8px;
+  right: 8px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3a1606;
+}
+.flame {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: 14px;
+  height: 30px;
+  margin-left: -7px;
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  background: radial-gradient(
+    ellipse at 50% 75%,
+    #fff 0%,
+    #ffe08a 30%,
+    #ff8a2b 70%,
+    transparent 100%
+  );
+  box-shadow: 0 0 26px 10px #ffb62788;
+  transform-origin: 50% 100%;
+  animation: flick 0.9s ease-in-out infinite alternate;
+}
+@keyframes flick {
+  from {
+    transform: scale(1, 1) rotate(-3deg);
+  }
+  to {
+    transform: scale(0.9, 1.15) rotate(3deg);
+  }
+}
+
+.hero {
+  text-align: center;
+  z-index: 2;
+  max-width: 34rem;
+}
+.hero .sub {
+  font-size: 1.4rem;
+  color: var(--marigold);
+}
+h1 {
+  font-size: clamp(3.4rem, 13vw, 7.5rem);
+  line-height: 1;
+  margin: 0.3rem 0 1rem;
+  color: var(--marigold);
+  text-shadow:
+    0 0 30px #ff8a2b99,
+    0 4px 0 #8a2b12;
+}
+.lead {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.celebrate {
+  z-index: 25;
+  position: relative;
+  font:
+    600 1.25rem "Mukta",
+    sans-serif;
+  color: #3a0f00;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.95rem 2.4rem;
+  cursor: pointer;
+  background: linear-gradient(180deg, #ffd45a, var(--marigold) 55%, #f07f13);
+  box-shadow:
+    0 0 0 3px #ffe08a55,
+    0 10px 30px #ff8a2b88;
+  animation: glow 2s ease-in-out infinite;
+  transition: transform 0.15s;
+}
+.celebrate:hover {
+  transform: scale(1.06);
+}
+.celebrate:active {
+  transform: scale(0.97);
+}
+@keyframes glow {
+  50% {
+    box-shadow:
+      0 0 0 10px #ffe08a22,
+      0 10px 46px #ffb627cc;
+  }
+}
+button:focus-visible {
+  outline: 3px solid #7df9ff;
+  outline-offset: 3px;
+}
+
+.mute {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 30;
+  font-size: 1.4rem;
+  background: #ffffff18;
+  border: 1px solid #ffffff33;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  cursor: pointer;
+}
+
+.wish {
+  position: relative;
+  z-index: 10;
+  width: min(36rem, 100%);
+  max-height: 70vh;
+  overflow: auto;
+  text-align: center;
+  padding: 1.6rem 1.6rem 1.4rem;
+  border-radius: 26px;
+  background: linear-gradient(160deg, #3a0f4fcc, #1a0829dd);
+  border: 2px solid var(--marigold);
+  box-shadow:
+    0 0 0 6px #ffb62722,
+    0 20px 70px #000a,
+    0 0 60px #ff8a2b44;
+  backdrop-filter: blur(8px);
+  animation: unfurl 0.8s cubic-bezier(0.2, 1.2, 0.3, 1) both;
+}
+@keyframes unfurl {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translateY(40px);
+  }
+}
+.wish .om {
+  font-size: 2.2rem;
+}
+.wish h2 {
+  font-size: clamp(2rem, 8vw, 3rem);
+  color: var(--marigold);
+  margin: 0.2rem 0;
+}
+.wish h3 {
+  font-size: 1.15rem;
+  color: #ffd9a0;
+  margin-bottom: 1rem;
+}
+.wish p {
+  font-size: 1.08rem;
+  line-height: 1.6;
+  margin: 0.55rem 0;
+  opacity: 0;
+  animation: fade 0.9s forwards;
+}
+.wish .from {
+  margin-top: 1.1rem;
+  font-size: 1rem;
+}
+.wish .from strong {
+  display: block;
+  font:
+    400 1.7rem "Yatra One",
+    serif;
+  color: var(--marigold);
+  margin-top: 0.2rem;
+}
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+}
+.ghost {
+  margin-top: 0.8rem;
+  background: none;
+  color: var(--cream);
+  border: 1px solid #ffffff55;
+  border-radius: 999px;
+  padding: 0.35rem 1.2rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 520px) {
+  .diya {
+    width: 34px;
+  }
+  .moon {
+    width: 48px;
+    height: 48px;
+  }
+  .stage {
+    gap: 1.2rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lanterns span,
+  .stars i,
+  .celebrate {
+    animation: none;
+  }
+}
+
+.wish {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* old Edge / IE */
+}
+.wish::-webkit-scrollbar {
+  display: none;                /* Chrome, Edge, Safari, mobile browsers */
+}
